@@ -6,7 +6,6 @@ import { AuthService } from '../../auth/auth.service';
 import { commonService } from '../../services/common.service';
 import { Chart, registerables } from 'chart.js/auto';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Formconfig } from '../../interface/formconfig';
 import { AppCustomModalComponent } from '../../shared/app-custom-modal/app-custom-modal.component';
 // Chart.register(...registerables)
 
@@ -26,16 +25,7 @@ export class HomeComponent implements OnInit {
   canvas: any
   ctx: any
   parentForm: FormGroup;
-  userFormConfig: Formconfig = {
-    fields: {
-      // name: '',
-      email: 'Email',
-      phone: 'Phone'
-    },
-    validations: {
-      // email: [Validators.required, Validators.email]
-    }
-  };
+
 
 
   //private addFormComponent: AddFormComponent;
@@ -62,7 +52,6 @@ export class HomeComponent implements OnInit {
   public monthlyTotalExpense = 0
   public monthlyExpenses
   ngOnInit(): void {
-    // this.initializeForm();
     this.getAllExpense()
     this.getRecentExpenses()
     this.loginUsers = this.commonservice.getLoggedInUser();
@@ -70,27 +59,19 @@ export class HomeComponent implements OnInit {
     console.log("call")
     this.expenseservice.fun()
     this.canvas = document.getElementById('myChart')
-    const chartData = [
-      //{ label: 'remainingBudget', data: [remainingBudget, monthlyExpenses], backgroundColor: this.backgroundColor }
-    ];
+
   }
   createDynamicForm(): void {
-    this.dynamicFormContainer.clear();
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(AppCustomModalComponent);
-    const dynamicComponent = this.dynamicFormContainer.createComponent(componentFactory);
-    dynamicComponent.instance.Formconfig = this.userFormConfig;
-    dynamicComponent.instance.formSubmit.subscribe(data => {
-      console.log('Form submitted:', data);
-      // Handle form submission data here
-    });
+    // this.dynamicFormContainer.clear();
+    // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(AppCustomModalComponent);
+    // const dynamicComponent = this.dynamicFormContainer.createComponent(componentFactory);
+    // dynamicComponent.instance.Formconfig = this.userFormConfig;
+    // dynamicComponent.instance.formSubmit.subscribe(data => {
+    //   console.log('Form submitted:', data);
+    //   // Handle form submission data here
+    // });
   }
-  initializeForm(): void {
-    const formControlsConfig = {};
-    for (const key of Object.keys(this.userFormConfig.fields)) {
-      formControlsConfig[key] = ['', this.userFormConfig.validations[key] || []];
-    }
-    this.parentForm = this.formBuilder.group(formControlsConfig);
-  }
+
 
   createChart() {
     const monthlyBudget = 100000;
@@ -216,14 +197,11 @@ export class HomeComponent implements OnInit {
     this.expensesArray.forEach(expense => {
       expense.categoryPercentage = Math.round((expense.categoryTotal / totalExpense) * 100);
     });
-    if (this.expensesArray) {
-      // this.getTotalExpenseAmount()
 
-    }
-    let total = this.expensesArray.reduce((total, expense) => {
-      // console.log('Expense:', expense); // Add console log for each expense
-      //return total + expense.amount;
-    }, 0);
+    // let total = this.expensesArray.reduce((total, expense) => {
+    //   // console.log('Expense:', expense); // Add console log for each expense
+    //   //return total + expense.amount;
+    // }, 0);
   }
 
   getExpenseWidth(paramsExpense: any): string {
@@ -286,7 +264,6 @@ export class HomeComponent implements OnInit {
 
   openModals(): void {
     //this.userFormConfig = { ... };
-    this.ModalService.openModal(this.userFormConfig);
   }
 
 
