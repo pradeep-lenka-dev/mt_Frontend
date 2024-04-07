@@ -1,0 +1,27 @@
+// /* Styles for the main container */
+// .main-container {
+//     display: flex;
+//     flex-direction: column;
+//     height: 100vh;
+//     background-color: aqua;
+//     width: 100%;
+//    // overflow: hidden;
+//     /* Prevent content from overflowing */
+// }
+
+// /* Styles for the app-header */
+// app-header {
+//     color: #fff;
+//     /* Example text color */
+//     z-index: 100;
+//     /* Ensure the header appears above other elements */
+// }
+
+// /* Styles for the router outlet */
+// router-outlet {
+//     flex: 1;
+//     //margin-top: 10px;
+//     /* Fill the remaining space */
+//     overflow-y: auto;
+//     /* Enable vertical scrolling if content exceeds container height */
+// }

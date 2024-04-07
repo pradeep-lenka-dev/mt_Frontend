@@ -1,0 +1,15 @@
+<div class="modal">
+    <div class="modal-header">
+        <h2>{{ title }}</h2>
+        <button class="close-button" (click)="closeModal()">X</button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+            <div *ngFor="let key of getKeys()">
+                <label>{{ key }}</label>
+                <!-- <input type="text" [formControlName]="key"> -->
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
