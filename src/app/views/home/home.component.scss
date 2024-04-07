@@ -1,10 +1,8 @@
 .mains{
-   // padding: 10px;
     background-color: #131129;
     overflow-y: hidden;
     overflow: hidden;
-   // width: 108%;
-    
+
 }
 .searchbar2 {
     display: none;
@@ -39,7 +37,7 @@
     //flex-wrap: wrap;
     gap: 25px;
     justify-content: space-around;
-    
+
 }
 
 .box {
@@ -74,49 +72,14 @@
     transform: scale(1.08);
 }
 
-.box:nth-child(1) {
-   // background-color: var(--one-use-color);
-}
-
-.box:nth-child(2) {
-    //background-color: var(--two-use-color);
-}
-
-.box:nth-child(3) {
-   // background-color: var(--one-use-color);
-}
-
-.box:nth-child(4) {
-   // background-color: var(--two-use-color);
-}
-
-.box img {
-   // height: 50px;
-}
-
 .box .text {
     color: rgb(0, 0, 0);
-}
-
-.topic {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 1px;
-}
-
-.topic-heading {
-    font-size: 30px;
-    letter-spacing: 3px;
 }
 
 .report-container {
     min-height: 300px;
     max-width: 1200px;
-   // margin: 30px auto 0px auto;
-   // background-color: #ffffff;
     background-color: #1D1933;
-    //border-radius: 30px;
-   // box-shadow: 3px 3px 10px rgb(188, 188, 188);
     padding: 0px 20px 20px 20px;
 }
 
@@ -160,15 +123,7 @@
     height: 200px;
 }
 
-.report-topic-heading,
-.item1 {
-   width: 100%;
-    display: flex;
-    position: sticky;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-}
+
 
 .t-op {
     font-size: 18px;
@@ -199,26 +154,8 @@
 }
 
 
-
-
-/* Responsive CSS Here */
-@media screen and (max-width: 950px) {
-
-    .report-topic-heading,
-    .item1,
-    .items {
-        width: 800px;
-    }
-}
-
 @media screen and (max-width: 850px) {
 
-
-    .report-topic-heading,
-    .item1,
-    .items {
-        width: 700px;
-    }
 
     .main {
         padding: 40px 30px 30px 30px;
@@ -249,11 +186,7 @@
         font-size: 20px;
     }
 
-    .report-topic-heading,
-    .item1,
-    .items {
-        width: 550px;
-    }
+
 }
 
 @media screen and (max-width: 400px) {
@@ -473,7 +406,7 @@ canvas{
 .card-title{
     text-align: center;
     color: white;
-    
+
 }
 .progress{
     margin-top: 20px;
