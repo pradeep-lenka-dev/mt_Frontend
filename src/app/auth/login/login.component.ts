@@ -21,19 +21,6 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     });
-    //this.getAllUsers()
-  }
-
-  getAllUsers(): void {
-    this.authService.getAllUsers().subscribe(
-      (response) => {
-        this.users = response; // Assign the response to your users array
-        console.log(this.users)
-      },
-      (error) => {
-        console.error('Error fetching users:', error);
-      }
-    );
   }
 
   login() {

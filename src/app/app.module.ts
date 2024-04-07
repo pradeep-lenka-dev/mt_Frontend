@@ -9,15 +9,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AppCustomModalComponent } from './shared/app-custom-modal/app-custom-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ModalComponent } from './shared/modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppCustomModalComponent,
-    ModalComponent,
 
-    
+
   ],
   imports: [
     BrowserModule,
@@ -25,7 +23,7 @@ import { ModalComponent } from './shared/modal/modal.component';
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule
-    
+
   ],
   providers: [
     provideAnimationsAsync()

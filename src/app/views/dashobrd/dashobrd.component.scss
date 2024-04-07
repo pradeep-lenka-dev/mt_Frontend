@@ -1,32 +1,18 @@
-/* layout.component.css */
 
-/* Style for the main container */
 .main-container {
     display: flex;
-   // height: calc(100vh - 10px);
-    /* Adjust height based on app-header's bottom position */
 }
 
-/* Style for the app-sidebar */
 app-sidebar {
     width: 60px;
-    /* Adjust width as needed */
     background-color: #f0f0f0;
-    /* Example background color */
 }
 
-/* Adjust styles for router-outlet content */
 router-outlet {
     flex-grow: 1;
-    /* Take up remaining space */
-    //padding: 20px;
-    /* Example padding */
     background-color: #ffffff;
-    /* Example background color */
 }
 
-/* Additional styles for app-header (if needed) */
 app-header {
     position: sticky;
-    /* Add styles specific to app-header */
 }
