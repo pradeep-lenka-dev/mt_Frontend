@@ -73,28 +73,6 @@ export class HomeComponent implements OnInit {
     const chartData = [
       //{ label: 'remainingBudget', data: [remainingBudget, monthlyExpenses], backgroundColor: this.backgroundColor }
     ];
-
-    //   data: {
-    //     labels: [
-    //       'remainingBudget',
-    //       'monthlyExpenses',
-    //       'Yellow'
-    //     ],
-    //     datasets: chartData,
-    //   },
-
-    //   options: {
-    //     cutout: 50,
-    //     circumference: 180,
-    //     aspectRatio: 2.5,
-    //     responsive: true,
-    //     animation: {
-    //       animateScale: true,
-    //       animateRotate: true
-    //     }
-
-    //   }
-    // });
   }
   createDynamicForm(): void {
     this.dynamicFormContainer.clear();
@@ -251,7 +229,6 @@ export class HomeComponent implements OnInit {
   getExpenseWidth(paramsExpense: any): string {
     for (const key in this.expensesArray) {
       if (Object.prototype.hasOwnProperty.call(this.expensesArray, key)) {
-        //console.log("🚀 ~ HomeComponent ~ getExpenseWidth ~ key:", key)
         const element = this.expensesArray[key];
         if (element.category == paramsExpense.category) {
           return element.categoryPercentage + 'px';

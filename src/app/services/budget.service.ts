@@ -18,16 +18,10 @@ export class BudgetService {
       .set('Authorization', authToken)
       .set('Content-Type', 'application/json');
     console.log("🚀 ~ BudgetService ~  this.headers:", this.headers)
-    //console.log("🚀 ~ BudgetService ~ headers:", s)
   }
 
   adbudget(params): Observable<any> {
-    console.log("🚀 ~ BudgetService ~  this.headers:", this.headers)
-
-    console.log("🚀 ~ BudgetService ~ adbudget ~ params:", params, { headers: this.headers });
     const url = this.apiUrl + 'addbudget';
-    console.log("🚀 ~ BudgetService ~ adbudget ~ url:", url);
-
     return this.http.post<any>(url, params).pipe(
       catchError(error => {
         console.log("🚀 ~ BudgetService ~ adbudget ~ error:", error);
