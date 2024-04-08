@@ -1,55 +1,28 @@
-body{
+body {
     width: 100%;
     margin: 0;
     padding: 0;
 }
-.login-container {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    height: 100vh;
-    width: 100%;
-}
 
-.card {
-    flex: 1;
+.login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    height: 100vh;
+    background-color: #1D1933;
 }
 
 .photo-container {
-    background-color: #f0f0f0;
-    //background-color: #007bff;
     flex: 1;
-   // background-image: url('../../../assets/images/signup-img (1).png');
+    //background-image: url('../../../assets/images/signup-img (2).png');
+    background-color: #131129;
     background-size: cover;
-    background-position: center;
 }
 
 .photo-container img {
-    display: block;
     width: 100%;
-    height: 80%;
-    justify-content: center;
-    align-items: center;
-}
-
-.form-container {
-    flex-direction: column;
-        background-color: #f0f0f0;
-}
-.login-container {
-    display: flex;
-    height: 100vh;
-}
-
-.photo-container {
-    width: 100%;
-    flex: 1;
-    // background-image: url('../../../assets/images/signup-img\ \(1\).png');
-    background-size: cover;
+    height: auto;
+   
 }
 
 .form-container {
@@ -58,15 +31,18 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #131129;
+    border-top-right-radius: 10px !important;
+        border-bottom-right-radius: 10px;
 }
 
 .card {
-    //width: 100%;
     height: 80%;
     max-width: 400px;
     padding: 20px;
-    //border-radius: 10px;
-    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
 }
 
 .form-group {
@@ -76,9 +52,7 @@ body{
 label {
     display: block;
     margin-bottom: 5px;
-
 }
-
 
 input[type="email"],
 input[type="password"],
@@ -90,9 +64,12 @@ button {
 }
 
 button {
-    background-color: #007bff;
+    background-color: #fcd937;
     color: #fff;
     cursor: pointer;
+}
+button:hover {
+    background-color: #f57626;
 }
 
 .additional-links {
@@ -102,7 +79,6 @@ button {
 .additional-links a {
     color: #007bff;
     text-decoration: none;
-    
 }
 
 .additional-links a:hover {
@@ -110,4 +86,34 @@ button {
     cursor: pointer;
 }
 
-/* Add your additional styles here */
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .photo-container {
+        display: flex;
+            /* Use flexbox to center the image */
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+            width: 100%;
+           // background-image: url('../../../assets/images/signup-img (6).png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+    }
+           .photo-container img {
+           // margin-top: 90px;
+               width: 50%;
+               height: auto;
+    
+           }
+
+    .form-container {
+        width: 100%;
+    }
+}
