@@ -1,18 +1,59 @@
 
-.main-container {
-    display: flex;
+// .main-container {
+//     display: flex;
+// }
+
+// app-sidebar {
+//     width: 60px;
+//     background-color: #f0f0f0;
+// }
+
+// router-outlet {
+//     flex-grow: 1;
+//     background-color: #ffffff;
+// }
+
+// app-header {
+//     position: sticky;
+// }
+
+
+/* dashboard.component.css */
+
+.containers {
+  display: flex;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100%;
 }
 
-app-sidebar {
-    width: 60px;
-    background-color: #f0f0f0;
+.sidebar {
+  width:fit-content;
+  /* Adjust width as needed */
+  background-color: #f4f4f4;
+  border-right: 1px solid #ccc;
+ // overflow-y: auto;
 }
 
-router-outlet {
-    flex-grow: 1;
-    background-color: #ffffff;
+.main-content {
+  flex: 1;
+  //padding: 20px;
 }
 
-app-header {
-    position: sticky;
+.header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1000;
+  height: 60px;
+  /* Adjust height as needed */
+  border-bottom: 1px solid #ccc;
 }
+  @media only screen and (max-width: 768px) {
+    .sidebar{
+        display: none;
+    }
+
+
+  }
+/* Optional: Add styles for header elements such as logo, navigation links, etc. */

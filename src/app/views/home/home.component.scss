@@ -1,116 +1,116 @@
 .mains{
-    background-color: #131129;
+    background-color:#222831 ;
     overflow-y: hidden;
     overflow: hidden;
+    flex: 1;
 
 }
-.searchbar2 {
-    display: none;
-}
-.containers {
-    display: grid;
-    overflow: hidden;
-    grid-template-columns: 60% 40%;
-    width: 97vw;
-}
 
-.column {
-    padding: 20px;
-}
-.card-cointainer{
-        background-color: #131129;
-        width: 100%;
-        padding: 15px; // #f0f0f0;
-}
-.left-column {
-    background-color:#131129;// #f0f0f0;
-    //flex: 0 0 80%;
-}
-.right-column {
-    background-color:#131129 //#f0f0f0;
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .box-container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    //flex-wrap: wrap;
-    gap: 25px;
-    justify-content: space-around;
-
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+  padding: 20px 10px 10px 10px;
+ // width:100vw;
+  /* Fill remaining width */
+ // max-width: 800px;
+  /* Optional: Set a maximum width for the box container */
 }
 
 .box {
-    height: 160px;
-    width: 100%;
-   // border-radius: 20px;
-    //box-shadow: 3px 3px 10px rgba(0, 30, 87, 0.751);
-    //padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-    position: relative;
-    background-color: #1D1933;
-}
-.box h5,h6{
-    color: white;
-
+  flex: 1;
+  margin: 0 10px;
+  /* Adjust margins as needed */
+  padding: 20px;
+  background-color: #1d1933;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #EEEEEE;
+  height: 160px;
 }
 
-
-.btn-add {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: white;
-    /* Set color to white */
+.text {
+  text-align: center;
 }
 
-.box:hover {
-    transform: scale(1.08);
+/* Adjustments for mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .box-container {
+      flex-direction: column;
+      /* Stack boxes vertically on smaller screens */
+  }
+
+  .box {
+      margin: 10px 0;
+      /* Adjust margins for stacked boxes */
+  }
 }
 
-.box .text {
-    color: rgb(0, 0, 0);
+
+.row.containers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-column {
+  background-color:#393E46;// #f0f0f0;
+  margin-left: 10px;
+  max-width: 100%; /* Full width on small screens */
+}
+.add-button{
+  background-color: #FD7014;
+}
+
+.right-column {
+  min-height: 200px;
+  background-color:#393E46;
+  margin-right: 10px;
+  max-width: 100%; /* Full width on small screens */
 }
 
 .report-container {
-    min-height: 300px;
-    max-width: 1200px;
-    background-color: #1D1933;
-    padding: 0px 20px 20px 20px;
+   border: 1px solid #ccc;
+  border-radius: 5px;
+ // min-height: 300px;
+  padding: 0px 20px 20px 20px;
+  background-color: #1D1933;
 }
 
 .report-header {
-    height: 80px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 20px 10px 20px;
-    border-bottom: 2px solid rgba(0, 20, 151, 0.59);
-}
-.report-header h4{
-    color: white;
+  //height: 80px;
+  width: 100%;
+  padding: 20px 20px 10px 20px;
+  display: flex;
+  background-color: #393E46;
+  //border-bottom: 2px solid #EEEEEE;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  color: white;
 }
 
-.recent-Articles {
+.report-heading {
+  margin: 0;
+}
+.report-heading {
+  margin: 0;
     font-size: 30px;
     font-weight: 600;
     color:white //#5500cb;
-}
-
-.add-button {
-    // height: 35px;
-    // width: 90px;
-    border-radius: 8px;
-    background-color: #5500cb;
-    color: white;
-    font-size: 15px;
-    border: none;
-    cursor: pointer;
 }
 
 .report-body {
@@ -120,293 +120,55 @@
     //overflow: scroll;
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 200px;
+    //height: 200px;
 }
-
-
-
-.t-op {
-    font-size: 18px;
-    letter-spacing: 0px;
-}
-
-.items {
-    width: 100%;
-    margin-top: 15px;
-}
-
-.item1 {
-    margin-top: 20px;
-}
-
-.t-op-nextlvl {
-    font-size: 14px;
-    letter-spacing: 0px;
-    font-weight: 600;
-}
-
-.label-tag {
-    width: 100px;
-    text-align: center;
-    background-color: rgb(0, 177, 0);
-    color: white;
-    border-radius: 4px;
-}
-
-
-@media screen and (max-width: 850px) {
-
-
-    .main {
-        padding: 40px 30px 30px 30px;
-    }
-
-    .searchbar2 {
-        width: 100%;
-        display: flex;
-        margin: 0 0 40px 0;
-        justify-content: center;
-    }
-
-    .searchbar2 input {
-        width: 250px;
-        height: 42px;
-        border-radius: 50px 0 0 50px;
-        background-color: var(--background-color3);
-        padding: 0 20px;
-        font-size: 15px;
-        border: 2px solid var(--secondary-color);
-    }
-}
-
-@media screen and (max-width: 490px) {
-
-
-    .recent-Articles {
-        font-size: 20px;
-    }
-
-
-}
-
-@media screen and (max-width: 400px) {
-    .recent-Articles {
-        font-size: 17px;
-    }
-
-    .add-button {
-        width: 60px;
-        font-size: 10px;
-        height: 27px;
-    }
-
-    .report-header {
-        height: 60px;
-        padding: 10px 10px 5px 10px;
-    }
-
-    .searchbtn img {
-        height: 20px;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .recent-Articles {
-        font-size: 12px;
-    }
-
-    .add-button {
-        width: 50px;
-        font-size: 8px;
-        height: 27px;
-    }
-
-    .report-header {
-        height: 60px;
-        padding: 10px 5px 5px 5px;
-    }
-
-    .t-op {
-        font-size: 12px;
-    }
-
-    .t-op-nextlvl {
-        font-size: 10px;
-    }
-
-    .report-body {
-        padding: 10px;
-    }
-
-    .label-tag {
-        width: 70px;
-    }
-
-    .searchbtn {
-        width: 40px;
-    }
-
-    .searchbar2 input {
-        width: 180px;
-    }
-}
-
-.modal {
-    display: none;
-}
-
-
 .report-body table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .report-body th,
 .report-body td {
-    padding: 8px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-    color: white;
+  color: #EEEEEE;
+  align-items: center;
+  border-bottom: 2px solid #EEEEEE;
+  //border: 1px solid #ccc;
+  padding: 8px;
 }
 
-.report-body th {
-    //background-color: #f2f2f2;
-    font-weight: bold;
+.report-body td {
+  text-align: center;
 }
 
-.report-body tbody tr {
-    text-align: center;
-    vertical-align: middle;
+.custom-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color:  #1D1933;
+  color: #EEEEEE;
 }
 
-
-.box {
-    position: relative;
+.list-item {
+  margin-top: 10PX;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.btn-add {
-    position: absolute;
-    top: 10px;
-    /* Adjust top position as needed */
-    right: 10px;
-    /* Adjust right position as needed */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
 }
 
-
-.budget-card {
-    position: relative;
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+.left-value {
+  flex: 1;
+  margin-right: 10px;
 }
 
-.balance-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.total-balance {
-    font-size: 14px;
-    color: #888;
-}
-
-.chart-container {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #1D1933;
-   // background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.chartbox{
-        background-color: #1D1933;
-        color: white;
-        padding: 10px;
-}
-.chart {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    //background-color: #3498db;
-}
-canvas{
-        background-color: #1D1933;
-        color: white;
-}
-
-.remaining-balance {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 40px;
-    height: 40px;
-}
-
-.progress-circle {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.progress-circle-mask {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    clip: rect(0, 40px, 40px, 20px);
-    border-radius: 50%;
-}
-
-.full {
-    transform: rotate(90deg);
-}
-
-.half {
-    transform: rotate(45deg);
-}
-
-.progress-circle-fill,
-.second-fill {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    clip: rect(0, 20px, 40px, 0);
-    border-radius: 50%;
-}
-
-.progress-circle-fill {
-    background-color: hsl(6, 78%, 57%);
-    /* Remaining balance color */
-}
-
-.second-fill {
-    background-color: #f0f0f0;
-    /* Background color */
-}
-
-
-.grid-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    /* Creates 4 columns with equal width */
-    list-style: none;
-    /* Remove default list styles */
-}
-
-.grid-list li {
-    border: 1px solid #ccc;
-    /* Optional: Add borders for better visibility */
-    padding: 10px;
-    /* Optional: Add padding for spacing */
-}
-.card-title{
-    text-align: center;
-    color: white;
-
+.right-values {
+  text-align: right;
 }
 .progress{
     margin-top: 20px;
@@ -419,50 +181,386 @@ canvas{
     /* Add !important */
 }
 
-  .list-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      margin-top: 20px;
-      color: white;
-      /* Adjust margin as needed */
+/* Responsive adjustments */
+@media screen and (min-width: 768px) {
+  .row.containers {
+    flex-direction: row; /* Display columns side by side on larger screens */
   }
+  .column {
+    flex: 1;
+    padding: 10px;
+  }
+  .left-column {
+    max-width: 60%; /* Adjust the maximum width of the left column */
+  }
+  .right-column {
+    max-width: 40%; /* Adjust the maximum width of the right column */
+  }
+}
 
-  .left-value {
-      flex: 1;
-      margin-left: 10px;
-      color: white;
-      /* Takes up remaining space */
-  }
 
-  .right-values {
-      display: flex;
-      gap: 10px;
-      /* Adjust gap as needed */
-  }
-   .dot {
-       width: 10px;
-       height: 10px;
-       border-radius: 50%;
-       /* Creates a circular shape */
-        background-color: getExpenseColor(expense) !important;
-       /* Change color as needed */
-   }
-  .bold {
-      font-weight: bold;
-      /* Make the text bold */
-  }
-  .custom-card{
-    background-color:#1D1933 ;
-  }
 
-  @media only screen and (max-width: 768px) {
-    .containers{
-        display: flex;
-    }
-    .box-container{
-          flex-direction: column;
-      }
-      
-  }
+
+// .box {
+//     height: 160px;
+//     width: 100%;
+//    // border-radius: 20px;
+//     //box-shadow: 3px 3px 10px rgba(0, 30, 87, 0.751);
+//     //padding: 20px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-around;
+//     cursor: pointer;
+//     transition: transform 0.3s ease-in-out;
+//     position: relative;
+//     background-color: #1D1933;
+// }
+// .box h5,h6{
+//     color: white;
+
+// }
+
+
+// .btn-add {
+//     position: absolute;
+//     top: 10px;
+//     right: 10px;
+//     color: white;
+//     /* Set color to white */
+// }
+
+// .box:hover {
+//     transform: scale(1.08);
+// }
+
+// .box .text {
+//     color: rgb(0, 0, 0);
+// }
+
+
+
+
+
+// .add-button {
+//     // height: 35px;
+//     // width: 90px;
+//     border-radius: 8px;
+//     background-color: #5500cb;
+//     color: white;
+//     font-size: 15px;
+//     border: none;
+//     cursor: pointer;
+// }
+
+// .items {
+//     width: 100%;
+//     margin-top: 15px;
+// }
+
+// .item1 {
+//     margin-top: 20px;
+// }
+// @media screen and (max-width: 850px) {
+
+
+//     .main {
+//         padding: 40px 30px 30px 30px;
+//     }
+
+//     .searchbar2 {
+//         width: 100%;
+//         display: flex;
+//         margin: 0 0 40px 0;
+//         justify-content: center;
+//     }
+
+//     .searchbar2 input {
+//         width: 250px;
+//         height: 42px;
+//         border-radius: 50px 0 0 50px;
+//         background-color: var(--background-color3);
+//         padding: 0 20px;
+//         font-size: 15px;
+//         border: 2px solid var(--secondary-color);
+//     }
+// }
+
+// @media screen and (max-width: 490px) {
+
+
+//     .report-heading {
+//         font-size: 20px;
+//     }
+
+
+// }
+
+// @media screen and (max-width: 400px) {
+//     .report-heading {
+//         font-size: 17px;
+//     }
+
+//     .add-button {
+//         width: 60px;
+//         font-size: 10px;
+//         height: 27px;
+//     }
+
+//     .report-header {
+//         height: 60px;
+//         padding: 10px 10px 5px 10px;
+//     }
+
+//     .searchbtn img {
+//         height: 20px;
+//     }
+// }
+
+// @media screen and (max-width: 320px) {
+//     .report-heading {
+//         font-size: 12px;
+//     }
+
+//     .add-button {
+//         width: 50px;
+//         font-size: 8px;
+//         height: 27px;
+//     }
+
+//     .report-header {
+//         height: 60px;
+//         padding: 10px 5px 5px 5px;
+//     }
+
+//     .t-op {
+//         font-size: 12px;
+//     }
+
+//     .t-op-nextlvl {
+//         font-size: 10px;
+//     }
+
+//     .report-body {
+//         padding: 10px;
+//     }
+
+//     .label-tag {
+//         width: 70px;
+//     }
+
+//     .searchbtn {
+//         width: 40px;
+//     }
+
+//     .searchbar2 input {
+//         width: 180px;
+//     }
+// }
+
+// .modal {
+//     display: none;
+// }
+
+
+// .report-body table {
+//     width: 100%;
+//     border-collapse: collapse;
+// }
+
+// .report-body th,
+// .report-body td {
+//     padding: 8px;
+//     text-align: center;
+//     border-bottom: 1px solid #ddd;
+//     color: white;
+// }
+
+// .report-body th {
+//     //background-color: #f2f2f2;
+//     font-weight: bold;
+// }
+
+// .report-body tbody tr {
+//     text-align: center;
+//     vertical-align: middle;
+// }
+
+
+// .box {
+//     position: relative;
+// }
+
+// .btn-add {
+//     position: absolute;
+//     top: 10px;
+//     /* Adjust top position as needed */
+//     right: 10px;
+//     /* Adjust right position as needed */
+// }
+
+
+// .budget-card {
+//     position: relative;
+//     width: 300px;
+//     border-radius: 10px;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+//     padding: 20px;
+// }
+
+// .balance-heading {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     margin-bottom: 20px;
+// }
+
+// .total-balance {
+//     font-size: 14px;
+//     color: #888;
+// }
+
+// .chart-container {
+//     width: 100px;
+//     height: 100px;
+//     border-radius: 50%;
+//     background-color: #1D1933;
+//    // background-color: #f0f0f0;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
+// .chartbox{
+//         background-color: #1D1933;
+//         color: white;
+//         padding: 10px;
+// }
+// .chart {
+//     width: 80px;
+//     height: 80px;
+//     border-radius: 50%;
+//     //background-color: #3498db;
+// }
+// canvas{
+//         background-color: #1D1933;
+//         color: white;
+// }
+
+// .remaining-balance {
+//     position: absolute;
+//     top: 10px;
+//     right: 10px;
+//     width: 40px;
+//     height: 40px;
+// }
+
+// .progress-circle {
+//     position: relative;
+//     width: 100%;
+//     height: 100%;
+// }
+
+// .progress-circle-mask {
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     clip: rect(0, 40px, 40px, 20px);
+//     border-radius: 50%;
+// }
+
+// .full {
+//     transform: rotate(90deg);
+// }
+
+// .half {
+//     transform: rotate(45deg);
+// }
+
+// .progress-circle-fill,
+// .second-fill {
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     clip: rect(0, 20px, 40px, 0);
+//     border-radius: 50%;
+// }
+
+// .progress-circle-fill {
+//     background-color: hsl(6, 78%, 57%);
+//     /* Remaining balance color */
+// }
+
+// .second-fill {
+//     background-color: #f0f0f0;
+//     /* Background color */
+// }
+
+
+// .grid-list {
+//     display: grid;
+//     grid-template-columns: repeat(4, 1fr);
+//     /* Creates 4 columns with equal width */
+//     list-style: none;
+//     /* Remove default list styles */
+// }
+
+// .grid-list li {
+//     border: 1px solid #ccc;
+//     /* Optional: Add borders for better visibility */
+//     padding: 10px;
+//     /* Optional: Add padding for spacing */
+// }
+// .card-title{
+//     text-align: center;
+//     color: white;
+
+// }
+// .progress{
+//     margin-top: 20px;
+// }
+// .progress-bar {
+//     height: 20px;
+//     //border-radius: 4px;
+//     background-color: getExpenseColor(expense) !important;
+//     width: getExpenseWidth(expense) !important ;
+//     /* Add !important */
+// }
+
+//   .list-item {
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: center;
+//       margin-bottom: 10px;
+//       margin-top: 20px;
+//       color: white;
+//       /* Adjust margin as needed */
+//   }
+
+//   .left-value {
+//       flex: 1;
+//       margin-left: 10px;
+//       color: white;
+//       /* Takes up remaining space */
+//   }
+
+//   .right-values {
+//       display: flex;
+//       gap: 10px;
+//       /* Adjust gap as needed */
+//   }
+//    .dot {
+//        width: 10px;
+//        height: 10px;
+//        border-radius: 50%;
+//        /* Creates a circular shape */
+//         background-color: getExpenseColor(expense) !important;
+//        /* Change color as needed */
+//    }
+//   .bold {
+//       font-weight: bold;
+//       /* Make the text bold */
+//   }
+//   .custom-card{
+//     background-color:#1D1933 ;
+//   }
+
+
