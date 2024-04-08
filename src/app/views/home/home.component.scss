@@ -456,3 +456,13 @@ canvas{
   .custom-card{
     background-color:#1D1933 ;
   }
+
+  @media only screen and (max-width: 768px) {
+    .containers{
+        display: flex;
+    }
+    .box-container{
+          flex-direction: column;
+      }
+      
+  }
