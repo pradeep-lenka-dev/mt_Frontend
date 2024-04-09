@@ -120,24 +120,38 @@
     //overflow: scroll;
     overflow-y: scroll;
     overflow-x: hidden;
-    //height: 200px;
+    height: 220px;
+}
+.report-body::-webkit-scrollbar{
+  width: 5px;
 }
 .report-body table {
   width: 100%;
   border-collapse: collapse;
 }
-
+.sticky-header {
+  position: sticky;
+  border-bottom: 2px solid #EEEEEE;
+  top: 0;
+  z-index: 999;
+  background-color: #1D1933;
+}
 .report-body th,
 .report-body td {
   color: #EEEEEE;
   align-items: center;
-  border-bottom: 2px solid #EEEEEE;
-  //border: 1px solid #ccc;
   padding: 8px;
 }
-
+.report-body th{
+ 
+  text-align: center;
+  position: static;
+}
 .report-body td {
   text-align: center;
+}
+.card-body{
+  height: 324px;
 }
 
 .custom-card {

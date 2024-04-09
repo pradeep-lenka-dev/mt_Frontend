@@ -27,6 +27,7 @@ export class AddFormComponent implements OnInit {
   public categoriesList = []
   dynamicForm: FormGroup;
   private modalRef!: NgbModalRef;
+  // categoriesList: { category: string; subcategories: string[]; }[];
 
   constructor(config: NgbModalConfig,
     private modalService: NgbModal,
@@ -39,6 +40,7 @@ export class AddFormComponent implements OnInit {
     config.backdrop = 'static';
     config.keyboard = false;
   }
+
   ngOnInit(): void {
     var date = new Date()
     this.getCategoriesList()
@@ -57,14 +59,43 @@ export class AddFormComponent implements OnInit {
         budgetDate: [],
 
       })
-
+    this.categoriesList = [
+      {
+        category: "Food",
+        subcategories: ["Groceries", "Dining Out", "Snacks/Drinks"]
+      },
+      {
+        category: "Shopping",
+        subcategories: ["Clothing", "Electronics", "Household Items"]
+      },
+      {
+        category: "Healthcare",
+        subcategories: ["Doctor Visits", "Prescriptions/Medications", "Health Insurance Premiums"]
+      },
+      {
+        category: "Housing",
+        subcategories: ["Rent/Mortgage", "Utilities", "Home/Rental Insurance"]
+      },
+      {
+        category: "Bill Payments",
+        subcategories: ["Internet", "Phone", "Cable/Satellite TV", "Other Monthly Bills"]
+      },
+      {
+        category: "Education",
+        subcategories: ["Tuition", "Books/Supplies", "Courses/Workshops"]
+      },
+      {
+        category: "Transportation",
+        subcategories: ["Gasoline/Fuel", "Public Transportation", "Vehicle Payments", "Insurance", "Maintenance/Repairs", "Parking/Tolls"]
+      }
+    ];
   }
 
   getCategoriesList() {
     try {
       this.commonService.getCategoriesList().subscribe(
         (Response) => {
-          this.categoriesList = Response.categoriesList
+          //this.categoriesList = Response.categoriesList
           return {
           }
         },

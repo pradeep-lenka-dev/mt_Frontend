@@ -20,7 +20,8 @@
 
 
                     <select id="expenseCategory" formControlName="expenseCategory">
-                        <option *ngFor="let category of categoriesList" value={{category.name}}>{{category.name}}
+                        <option *ngFor="let category of categoriesList" value={{category.category}}>
+                            {{category.category}}
                         </option>
                     </select>
                 </div>

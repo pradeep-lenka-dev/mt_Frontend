@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +10,11 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   constructor(private http: HttpClient) { }
+  apiUrl = environment.apiUrl
 
-  private apiUrl = 'https://mt-backend-pn1v.onrender.com/login'
-
-
-  login(params): Observable<any>{
+  login(params): Observable<any> {
     const crendation = params
-    return this.http.post(this.apiUrl,crendation)
+    return this.http.post(this.apiUrl + 'login', crendation)
   }
 
 }

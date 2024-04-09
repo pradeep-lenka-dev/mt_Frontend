@@ -92,8 +92,8 @@ export class HomeComponent implements OnInit {
 
       data: {
         labels: [
-          'monthlyExpenses',
-          'remainingBudget',
+          // 'monthlyExpenses',
+          // 'remainingBudget',
         ],
         datasets: [
           { label: 'Expenses', data: [this.monthlyTotalExpense, remainingBudget], hoverOffset: 4 },
@@ -197,11 +197,6 @@ export class HomeComponent implements OnInit {
     this.expensesArray.forEach(expense => {
       expense.categoryPercentage = Math.round((expense.categoryTotal / totalExpense) * 100);
     });
-
-    // let total = this.expensesArray.reduce((total, expense) => {
-    //   // console.log('Expense:', expense); // Add console log for each expense
-    //   //return total + expense.amount;
-    // }, 0);
   }
 
   getExpenseWidth(paramsExpense: any): string {
@@ -220,16 +215,18 @@ export class HomeComponent implements OnInit {
     switch (paramsExpense.category.toLowerCase()) {
       case 'food':
         return '#F97316';
-      case 'transport':
+      case 'shopping':
         return '#F59E0B'
-      case 'shoping':
-        return '#84CC16'
       case 'healthcare':
-        return "#22C55E"
-      case 'clothing':
         return '#84CC16'
       case 'housing':
-        return ''
+        return '#22C55E'
+      case 'bill payments':
+        return '#FF5733'
+      case 'education':
+        return '#36A2EB'
+      case 'transportation':
+        return '#FFC300';
       default:
         return 'gray'
     }
