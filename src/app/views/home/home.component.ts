@@ -161,7 +161,6 @@ export class HomeComponent implements OnInit {
       (error) => {
         console.error('Error fetching users:', error);
       }
-      //  console.log("call", Allexpense)
     )
   }
 
@@ -192,8 +191,6 @@ export class HomeComponent implements OnInit {
     const totalExpense = this.expensesArray.reduce((total, expense) => {
       return total + expense.categoryTotal;
     }, 0);
-
-    // Calculate percentage for each category and update expensesArray
     this.expensesArray.forEach(expense => {
       expense.categoryPercentage = Math.round((expense.categoryTotal / totalExpense) * 100);
     });
@@ -204,11 +201,11 @@ export class HomeComponent implements OnInit {
       if (Object.prototype.hasOwnProperty.call(this.expensesArray, key)) {
         const element = this.expensesArray[key];
         if (element.category == paramsExpense.category) {
-          return element.categoryPercentage + 'px';
+          return element.categoryPercentage   + '%';
         }
       }
     }
-    return 'px'
+    return '0%'
   }
 
   getExpenseColor(paramsExpense: any): string {

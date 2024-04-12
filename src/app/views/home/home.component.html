@@ -30,7 +30,7 @@
 
         </div>
     </div>
-     <div class="  row containers">
+    <div class="  row containers">
 
         <div class=" column left-column">
             <div class=" report-container">
@@ -72,11 +72,9 @@
                     <div>
 
                         <div class="progress" style="max-width: 100%">
-
-                            <div *ngFor="let expense of expensesArray">
-                                <div class="progress-bar" [style.width]="getExpenseWidth(expense)"
-                                    [style.backgroundColor]="getExpenseColor(expense)">
-                                </div>
+                            <div *ngFor="let expense of expensesArray" class="progress-bar " role="progressbar"
+                                [style.width]="getExpenseWidth(expense)"
+                                [style.backgroundColor]="getExpenseColor(expense)">
                             </div>
                         </div>
                         <div>

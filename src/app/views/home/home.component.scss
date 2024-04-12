@@ -184,14 +184,23 @@
 .right-values {
   text-align: right;
 }
+.progress {
+  width: 100%;
+  /* Ensure the progress container fills the available space */
+}
+
+.progress-bar-container {
+  width: 100%;
+}
 .progress{
     margin-top: 20px;
 }
 .progress-bar {
-    height: 20px;
+    height: 50px;
     //border-radius: 4px;
     background-color: getExpenseColor(expense) !important;
     width: getExpenseWidth(expense) !important ;
+    color: #EEEEEE;
     /* Add !important */
 }
 
