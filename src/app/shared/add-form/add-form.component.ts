@@ -16,6 +16,7 @@ export class AddFormComponent implements OnInit {
 
   expenseForm: FormGroup;
   budgetForm: FormGroup;
+  @Output() dataAdded: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild('AddFormComponent') private modalContent: TemplateRef<AddFormComponent>
   @Output() newConfirmationEvent = new EventEmitter<string>();
@@ -126,6 +127,7 @@ export class AddFormComponent implements OnInit {
       response => {
         console.log("Response:", response);
         this.activeModal.close(response);
+        this.dataAdded.emit();
         return response
       },
       error => {

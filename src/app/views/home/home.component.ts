@@ -7,6 +7,8 @@ import { commonService } from '../../services/common.service';
 import { Chart, registerables } from 'chart.js/auto';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AppCustomModalComponent } from '../../shared/app-custom-modal/app-custom-modal.component';
+import { ChangeDetectorRef } from '@angular/core';
+
 // Chart.register(...registerables)
 
 
@@ -34,6 +36,7 @@ export class HomeComponent implements OnInit {
     private authservice: AuthService,
     private commonservice: commonService,
     private formBuilder: FormBuilder,
+    private changedetectorRef: ChangeDetectorRef,
     private componentFactoryResolver: ComponentFactoryResolver
   ) { }
   public allExpense
@@ -120,7 +123,9 @@ export class HomeComponent implements OnInit {
 
   async openModal({ title: title, type: type }) {
     this.ModalService.add({ title: title, type: type, message: "pass your message ", body: "pass body", cancelBtnText: "No", }).then((updatedData) => {
+      console.log("🚀 ~ HomeComponent ~ this.ModalService.add ~ updatedData:", updatedData)
       this.getAllExpense()
+      this.changedetectorRef.detectChanges();
     })
       .catch(() => {
         console.log('Modal dismissed');
@@ -150,9 +155,11 @@ export class HomeComponent implements OnInit {
   }
 
   getAllExpense() {
+    console.log("call after add")
     this.expenseservice.getExpense().subscribe(
       (response) => {
         this.allExpense = response.expense
+        console.log("🚀 ~ HomeComponent ~ getAllExpense ~ this.allExpense:", this.allExpense)
         this.totalExpense = 0;
         for (let i = 0; i < this.allExpense.length; i++) {
           this.totalExpense += this.allExpense[i].expenseAmount;
@@ -201,7 +208,7 @@ export class HomeComponent implements OnInit {
       if (Object.prototype.hasOwnProperty.call(this.expensesArray, key)) {
         const element = this.expensesArray[key];
         if (element.category == paramsExpense.category) {
-          return element.categoryPercentage   + '%';
+          return element.categoryPercentage + '%';
         }
       }
     }
