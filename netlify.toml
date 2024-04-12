@@ -1,7 +1,7 @@
 [build]
 base ='mt_frontend'
-command = "npm run build:prod"
-publish ='/dist/browser'
+command = "npm run build"
+publish ='/dist/mt-frontend/browser'
 
 [[redirects]]
 from ='/*'
