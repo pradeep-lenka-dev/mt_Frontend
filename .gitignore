@@ -3,5 +3,5 @@ node_modules
 # npm-debug.log
 # Miscellaneous
 /.angular/cache
-# /dist
+ /dist
 /environments
