@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/mt-frontend/browser"
+  publish = "dist/mt-frontend"
   command = "ng build --prod"
 [[redirects]]
   from = "/*"
