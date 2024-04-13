@@ -1,5 +1,8 @@
-export const environment = {
-    prudction: false,
-    //apiUrl: 'http://localhost:5080/'
-    apiUrl: 'https://mt-backend-pn1v.onrender.com/'
-}
+const production = true;
+
+const environment = {
+    production: production,
+    apiUrl: production ? 'https://mt-backend-pn1v.onrender.com/' : 'http://localhost:5080/'
+};
+
+export { environment };
