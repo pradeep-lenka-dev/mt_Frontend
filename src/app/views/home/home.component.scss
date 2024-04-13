@@ -44,13 +44,17 @@
 @media screen and (max-width: 768px) {
   .box-container {
       flex-direction: column;
-      /* Stack boxes vertically on smaller screens */
+         
   }
 
   .box {
       margin: 10px 0;
-      /* Adjust margins for stacked boxes */
+      width: -webkit-fill-available;
   }
+    .box:nth-last-child(1) {
+      order: -1;
+      /* Reverses the order of the last card */
+    }
 }
 
 
