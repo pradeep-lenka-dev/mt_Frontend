@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef,AfterViewInit } from '@angular/core';
 import { AddFormComponent } from '../../shared/add-form/add-form.component';
 import { ModalService } from '../../shared/modal.service';
 import { expenseService } from '../../services/expense.service';
@@ -17,7 +17,7 @@ import { ChangeDetectorRef } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit , AfterViewInit{
   showModal: boolean = false;
   @ViewChild(AddFormComponent) addFormComponent: AddFormComponent | undefined;
   @ViewChild(AppCustomModalComponent) AppCustomModalComponent: AppCustomModalComponent | undefined;
@@ -63,6 +63,9 @@ export class HomeComponent implements OnInit {
     this.expenseservice.fun()
     this.canvas = document.getElementById('myChart')
 
+  }
+  ngAfterViewInit():void{
+    console.log("calll.....123456========>>>>>>>>>>")
   }
   createDynamicForm(): void {
     // this.dynamicFormContainer.clear();
@@ -120,16 +123,23 @@ export class HomeComponent implements OnInit {
     }
   }
   isModalOpen: boolean = false;
-
-  async openModal({ title: title, type: type }) {
-    this.ModalService.add({ title: title, type: type, message: "pass your message ", body: "pass body", cancelBtnText: "No", }).then((updatedData) => {
+  data: string = 'Initial Data';
+  async openModal({ title: title, type: type }){
+    this.ModalService.add({ title: title, type: type, message: "pass your message ", body: "pass body", cancelBtnText: "No", }).then(async (updatedData) => {
       console.log("🚀 ~ HomeComponent ~ this.ModalService.add ~ updatedData:", updatedData)
-      this.getAllExpense()
+      this.allExpense = []
+      console.log("🚀 ~ HomeComponent ~ this.ModalService.add ~ this.allExpense:", this.allExpense)
       this.changedetectorRef.detectChanges();
+      await this.getAllExpense()
     })
       .catch(() => {
         console.log('Modal dismissed');
       });
+  }
+  updateData(): void {
+    this.data = 'Updated Data';
+    // Trigger change detection manually
+    this.changedetectorRef.detectChanges();
   }
   getRecentExpenses() {
     interface LoggedInUser {
@@ -164,6 +174,7 @@ export class HomeComponent implements OnInit {
         for (let i = 0; i < this.allExpense.length; i++) {
           this.totalExpense += this.allExpense[i].expenseAmount;
         }
+        return  this.allExpense
       },
       (error) => {
         console.error('Error fetching users:', error);
