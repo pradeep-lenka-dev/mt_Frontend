@@ -17,7 +17,7 @@ import { ChangeDetectorRef } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit , AfterViewInit{
+export class HomeComponent implements OnInit{
   showModal: boolean = false;
   @ViewChild(AddFormComponent) addFormComponent: AddFormComponent | undefined;
   @ViewChild(AppCustomModalComponent) AppCustomModalComponent: AppCustomModalComponent | undefined;
@@ -59,13 +59,9 @@ export class HomeComponent implements OnInit , AfterViewInit{
     this.getRecentExpenses()
     this.loginUsers = this.commonservice.getLoggedInUser();
     this.getCurentmonthExpense()
-    console.log("call")
     this.expenseservice.fun()
     this.canvas = document.getElementById('myChart')
 
-  }
-  ngAfterViewInit():void{
-    console.log("calll.....123456========>>>>>>>>>>")
   }
   createDynamicForm(): void {
     // this.dynamicFormContainer.clear();
@@ -126,21 +122,14 @@ export class HomeComponent implements OnInit , AfterViewInit{
   data: string = 'Initial Data';
   async openModal({ title: title, type: type }){
     this.ModalService.add({ title: title, type: type, message: "pass your message ", body: "pass body", cancelBtnText: "No", }).then(async (updatedData) => {
-      console.log("🚀 ~ HomeComponent ~ this.ModalService.add ~ updatedData:", updatedData)
       this.allExpense = []
-      console.log("🚀 ~ HomeComponent ~ this.ModalService.add ~ this.allExpense:", this.allExpense)
-      this.changedetectorRef.detectChanges();
-      await this.getAllExpense()
+      this.getRecentExpenses() 
     })
       .catch(() => {
         console.log('Modal dismissed');
       });
   }
-  updateData(): void {
-    this.data = 'Updated Data';
-    // Trigger change detection manually
-    this.changedetectorRef.detectChanges();
-  }
+
   getRecentExpenses() {
     interface LoggedInUser {
       userId: string;
@@ -150,7 +139,6 @@ export class HomeComponent implements OnInit , AfterViewInit{
 
     this.expenseservice.getRecentExpenses(temp).subscribe(
       async (response) => {
-        console.log("🚀 ~ response:", response)
         this.recntExpense = response.expense
         this.totalRecentExpense = 0;
         for (let i = 0; i < this.recntExpense.length; i++) {
@@ -165,11 +153,9 @@ export class HomeComponent implements OnInit , AfterViewInit{
   }
 
   getAllExpense() {
-    console.log("call after add")
     this.expenseservice.getExpense().subscribe(
       (response) => {
         this.allExpense = response.expense
-        console.log("🚀 ~ HomeComponent ~ getAllExpense ~ this.allExpense:", this.allExpense)
         this.totalExpense = 0;
         for (let i = 0; i < this.allExpense.length; i++) {
           this.totalExpense += this.allExpense[i].expenseAmount;

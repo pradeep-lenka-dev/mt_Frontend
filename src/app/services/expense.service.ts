@@ -12,12 +12,10 @@ export class expenseService {
     apiUrl = environment.apiUrl
     constructor(private http: HttpClient) {
        const authToken = localStorage.getItem("userData");
-        console.log("🚀 ~ expenseService ~ constructor ~ authToken:", authToken)
         this.headers = new HttpHeaders()
         .set('Authorization', authToken)
         .set('Content-Type', 'application/json');
 
-        console.log("🚀 ~ expenseService ~ constructor ~ this.headers :", this.headers )
     }
 
     addExpense(params): Observable<any> {
@@ -29,14 +27,12 @@ export class expenseService {
     fun() {
         const url = this.apiUrl + 'addbudget'
         const res = this.http.get<any>(this.apiUrl + 'addbudget',)
-        console.log("🚀 ~ expenseService ~ fun ~ res:", res)
     }
 
     getExpense(): Observable<any> {
         return this.http.get(this.apiUrl + 'getAllExpense')
     }
     getRecentExpenses(params): Observable<any> {
-        console.log("🚀 ~ expenseService ~ getRecentExpenses ~ params:", params)
         return this.http.post(this.apiUrl + 'getRecentExpenses', params)
         // console.log("🚀 ~ expenseService ~ getRecentExpenses ~ data:", data)
         // return data

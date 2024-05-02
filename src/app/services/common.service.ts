@@ -14,7 +14,7 @@ export class commonService {
     apiUrl = environment.apiUrl
     getLoggedInUser() {
         let authToken = localStorage.getItem('userData')
-        console.log("🚀 ~ commonService ~ apiUrl:", this.apiUrl)
+        // console.log("🚀 ~ commonService ~ apiUrl:", this.apiUrl)
         const LogedinUser = JSON.parse(authToken);
         return LogedinUser.loginUser
         // let dec = jwt.decode(authToken)
