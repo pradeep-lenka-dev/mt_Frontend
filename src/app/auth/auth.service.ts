@@ -17,4 +17,9 @@ export class AuthService {
     return this.http.post(this.apiUrl + 'login', crendation)
   }
 
+  signup(params):Observable<any>{
+    return this.http.post(this.apiUrl+'signup',params)
+
+  }
+
 }

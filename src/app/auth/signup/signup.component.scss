@@ -1,0 +1,132 @@
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1D1933;
+}
+
+.photo-container {
+    flex: 1;
+    justify-content: center;
+    //background-image: url('../../../assets/images/signup-img (2).png');
+    background-color: #131129;
+    background-size: cover;
+}
+
+.photo-container img {
+    width: 100%;
+    height: auto;
+   
+}
+
+.form-container {
+    width: 50%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #131129;
+    border-top-right-radius: 10px !important;
+    border-bottom-right-radius: 10px;
+}
+
+.card {
+    height: 80%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 0px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #fff;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="string"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #FFFCC8;
+}
+
+button {
+    background-color: #fcd937;
+    color: #fff;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #f57626;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.additional-links {
+    margin-top: 20px;
+}
+
+.additional-links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.additional-links a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .photo-container {
+        display: flex;
+            /* Use flexbox to center the image */
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+            width: 100%;
+           // background-image: url('../../../assets/images/signup-img (6).png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+    }
+           .photo-container img {
+           // margin-top: 90px;
+               width: 50%;
+               height: auto;
+    
+           }
+
+    .form-container {
+        width: 100%;
+    }
+}
