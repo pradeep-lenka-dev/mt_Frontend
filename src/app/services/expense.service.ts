@@ -29,8 +29,8 @@ export class expenseService {
         const res = this.http.get<any>(this.apiUrl + 'addbudget',)
     }
 
-    getExpense(): Observable<any> {
-        return this.http.get(this.apiUrl + 'getAllExpense')
+    getExpense(curentUser): Observable<any> {
+        return this.http.post(this.apiUrl + 'getAllExpense',curentUser)
     }
     getRecentExpenses(params): Observable<any> {
         return this.http.post(this.apiUrl + 'getRecentExpenses', params)

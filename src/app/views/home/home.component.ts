@@ -54,6 +54,7 @@ export class HomeComponent implements OnInit{
   public loginUsers
   public monthlyTotalExpense = 0
   public monthlyExpenses
+  public curentUser 
   ngOnInit(): void {
     this.getAllExpense()
     this.getRecentExpenses()
@@ -61,6 +62,7 @@ export class HomeComponent implements OnInit{
     this.getCurentmonthExpense()
     this.expenseservice.fun()
     this.canvas = document.getElementById('myChart')
+   
 
   }
   createDynamicForm(): void {
@@ -153,7 +155,9 @@ export class HomeComponent implements OnInit{
   }
 
   getAllExpense() {
-    this.expenseservice.getExpense().subscribe(
+    this.curentUser = this.commonservice.getLoggedInUser()
+
+    this.expenseservice.getExpense(this.curentUser).subscribe(
       (response) => {
         this.allExpense = response.expense
         this.totalExpense = 0;
