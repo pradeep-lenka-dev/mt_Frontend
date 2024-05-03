@@ -44,7 +44,7 @@ export class AddFormComponent implements OnInit {
 
   ngOnInit(): void {
     var date = new Date()
-    this.getCategoriesList()
+    // this.getCategoriesList()
     this.expenseForm = this.formBuilder.group({
       expenseName: [''],
       expenseCategory: [''],

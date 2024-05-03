@@ -8,8 +8,7 @@ import { Chart, registerables } from 'chart.js/auto';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AppCustomModalComponent } from '../../shared/app-custom-modal/app-custom-modal.component';
 import { ChangeDetectorRef } from '@angular/core';
-
-// Chart.register(...registerables)
+import { BudgetService } from '../../services/budget.service';
 
 
 @Component({
@@ -21,7 +20,6 @@ export class HomeComponent implements OnInit{
   showModal: boolean = false;
   @ViewChild(AddFormComponent) addFormComponent: AddFormComponent | undefined;
   @ViewChild(AppCustomModalComponent) AppCustomModalComponent: AppCustomModalComponent | undefined;
-  // @ViewChild('mychart') mychart: any;
   @ViewChild('dynamicFormContainer', { read: ViewContainerRef }) dynamicFormContainer: ViewContainerRef;
 
   canvas: any
@@ -35,9 +33,10 @@ export class HomeComponent implements OnInit{
     private expenseservice: expenseService,
     private authservice: AuthService,
     private commonservice: commonService,
+    private budgetservice: BudgetService,
     private formBuilder: FormBuilder,
     private changedetectorRef: ChangeDetectorRef,
-    private componentFactoryResolver: ComponentFactoryResolver
+
   ) { }
   public allExpense
   public totalExpense
@@ -55,6 +54,7 @@ export class HomeComponent implements OnInit{
   public monthlyTotalExpense = 0
   public monthlyExpenses
   public curentUser 
+  public monthlyBudget
   ngOnInit(): void {
     this.getAllExpense()
     this.getRecentExpenses()
@@ -62,32 +62,15 @@ export class HomeComponent implements OnInit{
     this.getCurentmonthExpense()
     this.expenseservice.fun()
     this.canvas = document.getElementById('myChart')
-   
+    this.getcurentMonthBudget()
 
   }
-  createDynamicForm(): void {
-    // this.dynamicFormContainer.clear();
-    // const componentFactory = this.componentFactoryResolver.resolveComponentFactory(AppCustomModalComponent);
-    // const dynamicComponent = this.dynamicFormContainer.createComponent(componentFactory);
-    // dynamicComponent.instance.Formconfig = this.userFormConfig;
-    // dynamicComponent.instance.formSubmit.subscribe(data => {
-    //   console.log('Form submitted:', data);
-    //   // Handle form submission data here
-    // });
-  }
-
 
   createChart() {
-    const monthlyBudget = 100000;
-    const remainingBudget = monthlyBudget - this.monthlyTotalExpense;
+
+    const remainingBudget = this.monthlyBudget - this.monthlyTotalExpense;
+    console.log("🚀 ~ HomeComponent ~ createChart ~ remainingBudget:", remainingBudget)
     const chartOptions = {
-      // plugins: {
-      //   title: {
-      //     display: true,
-      //     text: 'Custom Chart Title',
-      //     color: 'white' // Set label color to white
-      //   }
-      // }
       aspectRatio: 2.5,
       color: 'white'
     };
@@ -96,12 +79,12 @@ export class HomeComponent implements OnInit{
 
       data: {
         labels: [
-          // 'monthlyExpenses',
-          // 'remainingBudget',
+          'monthlyExpenses',
+          'remainingBudget',
         ],
         datasets: [
-          { label: 'Expenses', data: [this.monthlyTotalExpense, remainingBudget], hoverOffset: 4 },
-          // { label: 'Savings', data: [500] },
+          {  data: [this.monthlyTotalExpense, remainingBudget], hoverOffset: 4 },
+          // { label: 'Savings', data:[remainingBudget] },
           //  { label: 'Current Balance', data: [remainingBudget] }
           //{ label: "blue", data: ['5'], }
         ],
@@ -122,14 +105,20 @@ export class HomeComponent implements OnInit{
   }
   isModalOpen: boolean = false;
   data: string = 'Initial Data';
-  async openModal({ title: title, type: type }){
-    this.ModalService.add({ title: title, type: type, message: "pass your message ", body: "pass body", cancelBtnText: "No", }).then(async (updatedData) => {
-      this.allExpense = []
-      this.getRecentExpenses() 
+  async openModal({ title: title, type: type }) {
+    this.ModalService.add({
+      title: title,
+      type: type,
+      message: "pass your message ",
+      body: "pass body",
+      cancelBtnText: "No",
+    }).then(async (updatedData) => {
+      if (this.chart) {
+        this.chart.destroy();
+      }
+      this.getRecentExpenses()
+      this.getCurentmonthExpense()
     })
-      .catch(() => {
-        console.log('Modal dismissed');
-      });
   }
 
   getRecentExpenses() {
@@ -188,7 +177,7 @@ export class HomeComponent implements OnInit{
       const categoryTotal = expensesByCategory[category].reduce((total, expense) => {
         return total + expense.expenseAmount;
       }, 0);
-
+      
       return {
         category: category,
         expenses: expensesByCategory[category],
@@ -264,16 +253,19 @@ export class HomeComponent implements OnInit{
     );
   }
 
-  openModals(): void {
-    //this.userFormConfig = { ... };
-  }
-
-
-  onSubmit() {
-    // Handle form submission
-  }
   closeModal() {
     this.showModal = false;
   }
+
+  getcurentMonthBudget(){
+    this.loginUsers = this.commonservice.getLoggedInUser();
+    this.budgetservice.getcurentMonthBudget(this.loginUsers).subscribe(
+      async (response) => {
+        this.monthlyBudget = response.budget.budgetAmount
+        return {
+      }
+      }
+    )
+   }
 
 }

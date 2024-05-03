@@ -22,12 +22,16 @@ export class BudgetService {
 
   adbudget(params): Observable<any> {
     const url = this.apiUrl + 'addbudget';
-    return this.http.post<any>(url, params).pipe(
+    return this.http.post<any>(url, params,{ headers: this.headers }).pipe(
       catchError(error => {
         console.log("🚀 ~ BudgetService ~ adbudget ~ error:", error);
         return throwError(error);
       })
     );
   }
+
+  getcurentMonthBudget(params):Observable<any>{
+    return this.http.post<any>(this.apiUrl + 'getbudget',params)
+}
 
 }
