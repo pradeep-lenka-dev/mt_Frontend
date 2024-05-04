@@ -4,7 +4,7 @@
             <div class="box box1">
                 <div class="text" (click)="openModal({ title: 'Add your budget', type: 'budget' })">
                     <h5 class="black">Total Balance</h5>
-                    <h6> <i class="bi bi-currency-rupee"></i>{{monthlyBudget}}</h6>
+                    <h6> <i class="bi bi-currency-rupee"></i>{{remainingBudget}}</h6>
                 </div>
 
             </div>
@@ -12,7 +12,7 @@
             <div class="box box2">
                 <div class="text">
                     <h5>Total Expenses</h5>
-                    <h6> <i class="bi bi-currency-rupee"></i> {{ totalExpense }} </h6>
+                    <h6> <i class="bi bi-currency-rupee"></i> {{ monthlyTotalExpense }} </h6>
                 </div>
             </div>
 

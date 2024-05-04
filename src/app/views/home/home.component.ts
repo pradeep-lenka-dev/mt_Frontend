@@ -1,13 +1,11 @@
-import { Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef,AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { AddFormComponent } from '../../shared/add-form/add-form.component';
 import { ModalService } from '../../shared/modal.service';
 import { expenseService } from '../../services/expense.service';
-import { AuthService } from '../../auth/auth.service';
 import { commonService } from '../../services/common.service';
 import { Chart, registerables } from 'chart.js/auto';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup,} from '@angular/forms';
 import { AppCustomModalComponent } from '../../shared/app-custom-modal/app-custom-modal.component';
-import { ChangeDetectorRef } from '@angular/core';
 import { BudgetService } from '../../services/budget.service';
 
 
@@ -20,84 +18,77 @@ export class HomeComponent implements OnInit{
   showModal: boolean = false;
   @ViewChild(AddFormComponent) addFormComponent: AddFormComponent | undefined;
   @ViewChild(AppCustomModalComponent) AppCustomModalComponent: AppCustomModalComponent | undefined;
-  @ViewChild('dynamicFormContainer', { read: ViewContainerRef }) dynamicFormContainer: ViewContainerRef;
 
   canvas: any
   ctx: any
   parentForm: FormGroup;
 
-
-
-  //private addFormComponent: AddFormComponent;
   constructor(private ModalService: ModalService,
     private expenseservice: expenseService,
-    private authservice: AuthService,
     private commonservice: commonService,
     private budgetservice: BudgetService,
-    private formBuilder: FormBuilder,
-    private changedetectorRef: ChangeDetectorRef,
-
   ) { }
   public allExpense
   public totalExpense
   public recntExpense
   public totalRecentExpense
-  public loginUser
   public chart
-  public backgroundColor
-  public foodExpense
   public expensesByCategory = {};
   public expensesArray
   public categoryTotal
-  public categoryTotals: { [category: string]: { total: number, percentage: number } }
   public loginUsers
   public monthlyTotalExpense = 0
   public monthlyExpenses
   public curentUser 
   public monthlyBudget
+  public remainingBudget = 0
   ngOnInit(): void {
+    this.getcurentMonthBudget()
     this.getAllExpense()
     this.getRecentExpenses()
     this.loginUsers = this.commonservice.getLoggedInUser();
     this.getCurentmonthExpense()
     this.expenseservice.fun()
     this.canvas = document.getElementById('myChart')
-    this.getcurentMonthBudget()
 
   }
 
   createChart() {
 
-    const remainingBudget = this.monthlyBudget - this.monthlyTotalExpense;
-    console.log("🚀 ~ HomeComponent ~ createChart ~ remainingBudget:", remainingBudget)
+    this.remainingBudget =  this.remainingBudget + this.monthlyBudget - this.monthlyTotalExpense;
+    if(this.remainingBudget < 0){
+      this.remainingBudget = 0
+    }
     const chartOptions = {
       aspectRatio: 2.5,
       color: 'white'
     };
     this.chart = new Chart("MyChart", {
+      
       type: 'doughnut',
 
-      data: {
+       data : {
         labels: [
-          'monthlyExpenses',
-          'remainingBudget',
+          'monthlyTotalExpense',
+          // 'Blue',
+          'remainingBudget'
         ],
-        datasets: [
-          {  data: [this.monthlyTotalExpense, remainingBudget], hoverOffset: 4 },
-          // { label: 'Savings', data:[remainingBudget] },
-          //  { label: 'Current Balance', data: [remainingBudget] }
-          //{ label: "blue", data: ['5'], }
-        ],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [this.monthlyTotalExpense,  this.remainingBudget],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)'
+          ],
+          hoverOffset: 4
+        }]
       },
 
       options: chartOptions
     });
   }
 
-  modalStyle: string = 'modal-style-primary';
-  modalTitle: string = 'Info Confirmation';
-  modalBody: string = 'This is a Information Confirmation message';
-  modalButtonColor: string = 'btn-primary';
   getConfirmationValue(value: any) {
     if (value == 'Save click') {
       console.log(value);
@@ -116,8 +107,10 @@ export class HomeComponent implements OnInit{
       if (this.chart) {
         this.chart.destroy();
       }
+      this.monthlyTotalExpense = 0
       this.getRecentExpenses()
       this.getCurentmonthExpense()
+      await this.getcurentMonthBudget()
     })
   }
 
@@ -240,9 +233,10 @@ export class HomeComponent implements OnInit{
     this.expenseservice.getMonthExpense(params).subscribe(
       async (response) => {
         this.monthlyExpenses = response.expense
-        this.monthlyExpenses.forEach(eachexpense => {
+        for (const eachexpense of this.monthlyExpenses) {
           this.monthlyTotalExpense = this.monthlyTotalExpense + eachexpense.expenseAmount
-        });
+
+        }
         await this.createChart()
         await this.getExpensesbyCategory()
       },
@@ -261,7 +255,12 @@ export class HomeComponent implements OnInit{
     this.loginUsers = this.commonservice.getLoggedInUser();
     this.budgetservice.getcurentMonthBudget(this.loginUsers).subscribe(
       async (response) => {
-        this.monthlyBudget = response.budget.budgetAmount
+        if(response.budget == null){
+          this.monthlyBudget = 0
+        }else{
+
+          this.monthlyBudget = response.budget.budgetAmount
+        }
         return {
       }
       }
