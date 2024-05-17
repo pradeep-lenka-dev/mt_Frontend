@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AddFormComponent } from '../shared/add-form/add-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FotterComponent } from './fotter/fotter.component';
 
 //import { ChartsModule } from 'ng2-charts';
 //import { ChartModule } from 'angular-highcharts';
@@ -21,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SidebarComponent,
     HomeComponent,
     AddFormComponent,
+    FotterComponent,
     
   ],
   imports: [
