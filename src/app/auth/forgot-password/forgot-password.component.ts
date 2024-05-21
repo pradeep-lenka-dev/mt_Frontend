@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-forgot-password',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './forgot-password.component.scss'
 })
 export class ForgotPasswordComponent {
+
+  passwordResetForm:FormGroup
+
+  onSubmit(){
+    const newLocal = "your email.";
+    console.log(newLocal);
+    
+  }
 
 }

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   users: any[] = [];
+  loginError:string | null = null
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
         console.log(this.users)
       },
       (error) => {
+        this.loginError = "Invalid password!"
         console.error('Error fetching users:', error);
       }
     )
