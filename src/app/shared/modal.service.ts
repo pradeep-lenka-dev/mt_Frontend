@@ -17,7 +17,6 @@ export class ModalService {
     private http: HttpClient) { }
 
   async add({ title, type, message, body, cancelBtnText }) {
-    console.log("🚀 ~ ModalService ~ add ~ title:", title)
     const modalRef = this.ModalService.open(AddFormComponent, { centered: true })
     modalRef.componentInstance.title = title || "defult title";
     modalRef.componentInstance.type = type || "defult type";

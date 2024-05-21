@@ -16,14 +16,26 @@
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" id="password" formControlName="password" placeholder="Enter your password"
+<<<<<<< Updated upstream
                     required>
                 <p class="errormsg">{{loginError}}</p>
+=======
+                required>
+                <input class="toggle-password " type="checkbox" (change)="togglePassword()"> <span>Show Password</span>  
+
+>>>>>>> Stashed changes
             </div>
             <button type="submit">Login</button>
         </form>
+        <ngx-loading [show]="loading"></ngx-loading>
+
         <div class="additional-links">
             <p>Don't have an account? <a (click)="redirect('signup')">Sign Up</a></p>
             <p>Forgot your password? <a (click)="redirect('forgot-password')">Reset Password</a></p>
         </div>
     </div>
 </div>
+<button (click)="openNotificationModal('success')">Show Success Modal</button>
+<button (click)="openNotificationModal('failure')">Show Failure Modal</button>
+
+<app-notification-modal *ngIf="showModal" [data]="modalData" (close)="closeModal()"></app-notification-modal>

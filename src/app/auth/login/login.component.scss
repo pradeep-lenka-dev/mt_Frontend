@@ -57,6 +57,7 @@ label {
 
 input[type="email"],
 input[type="password"],
+input[type ="text"],
 button {
     width: 100%;
     padding: 10px;
@@ -71,6 +72,14 @@ button {
 }
 button:hover {
     background-color: #f57626;
+}
+.toggle-password {
+    cursor: pointer;
+    user-select: none;
+    margin-top: 5%;
+}
+.toggle-password span{
+    right: 10px;
 }
 
 .additional-links {

@@ -6,16 +6,20 @@ import { ModalService } from '../modal.service';
 import { expenseService } from '../../services/expense.service';
 import { BudgetService } from '../../services/budget.service';
 import { commonService } from '../../services/common.service';
+import {Formfields} from '../../interface/formfields';
 @Component({
   selector: 'app-add-form',
   templateUrl: './add-form.component.html',
   styleUrl: './add-form.component.scss'
 })
-@Injectable()
+@Injectable({
+  providedIn:'root'
+})
 export class AddFormComponent implements OnInit {
 
   expenseForm: FormGroup;
   budgetForm: FormGroup;
+  @Input() formFileds:Formfields[]=[]
   @Output() dataAdded: EventEmitter<any> = new EventEmitter<any>();
 
   @ViewChild('AddFormComponent') private modalContent: TemplateRef<AddFormComponent>

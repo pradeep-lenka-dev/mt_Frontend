@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit{
           'remainingBudget'
         ],
         datasets: [{
-          label: 'My First Dataset',
+          // label: 'My First Dataset',
           data: [this.monthlyTotalExpense,  this.remainingBudget],
           backgroundColor: [
             'rgb(255, 99, 132)',

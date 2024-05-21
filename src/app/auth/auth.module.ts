@@ -5,18 +5,24 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxLoadingModule } from "ngx-loading";
+import { SharedModule } from '../shared/shared.module';
+// import { NotificationModalComponent } from '../shared/notification-modal/notification-modal.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     SignupComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    // NotificationModalComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxLoadingModule,
+    SharedModule
   ]
 })
 export class AuthModule { }

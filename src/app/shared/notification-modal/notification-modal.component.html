@@ -1,0 +1,7 @@
+<div class="modal-overlay" (click)="onClose()">
+    <div class="modal" [ngClass]="{'success':data.type === 'success', 'failure':data.type ==='failure'}">
+        <h1>{{data.title}}</h1>
+        <p>{{data.message}}</p>
+        <button (click)="onClose()">Close</button>
+    </div>
+</div>
