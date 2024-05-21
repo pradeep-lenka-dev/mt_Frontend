@@ -12,13 +12,10 @@ import { NotificationData } from '../../shared/notification-modal/notification-m
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   users: any[] = [];
-<<<<<<< Updated upstream
   loginError:string | null = null
-=======
   loading: boolean = false
   modalData : NotificationData;
   showModal = false;
->>>>>>> Stashed changes
   constructor(private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router
@@ -43,12 +40,9 @@ export class LoginComponent implements OnInit {
         console.log(this.users)
       },
       (error) => {
-<<<<<<< Updated upstream
         this.loginError = "Invalid password!"
-=======
         this.loading = false
         this.openNotificationModal('failure')
->>>>>>> Stashed changes
         console.error('Error fetching users:', error);
       }
     )
