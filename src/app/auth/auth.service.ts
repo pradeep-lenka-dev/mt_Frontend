@@ -21,5 +21,8 @@ export class AuthService {
     return this.http.post(this.apiUrl+'signup',params)
 
   }
+  forgetPassword(params):Observable<any>{
+    return this.http.post(this.apiUrl+'forgetPassword',params)
+  }
 
 }

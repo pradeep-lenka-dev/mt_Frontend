@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxLoadingModule } from "ngx-loading";
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
 // import { NotificationModalComponent } from '../shared/notification-modal/notification-modal.component';
 
 
@@ -22,7 +23,8 @@ import { SharedModule } from '../shared/shared.module';
     AuthRoutingModule,
     ReactiveFormsModule,
     NgxLoadingModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ]
 })
 export class AuthModule { }
