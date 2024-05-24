@@ -15,16 +15,35 @@ export class ForgotPasswordComponent implements OnInit{
 
   isOtp:boolean = false;
 
-
-  constructor(private authservice : AuthService,private formBuilder: FormBuilder){}
+  otp: string = '';
+  otpArray: string[] = new Array(6).fill('');
+  onInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.otp = input.value.slice(0, 6);
+    this.updateOtpArray();
+  }
+  constructor(private authservice : AuthService,private formBuilder: FormBuilder){
+    this.passwordResetForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]
+    });
+  }
 
   ngOnInit():void{
-    this.passwordResetForm = new  FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email])
-    })
-    this.otpForm = new FormGroup({
-      otp:new FormControl('')
-    })
+    // this.passwordResetForm = new  FormGroup({
+    //   email: new FormControl('', [Validators.required, Validators.email])
+    // })
+    // this.otpForm = new FormGroup({
+    //   otp:new FormControl('')
+    // })
+
+    
+  }
+
+  updateOtpArray(): void {
+    this.otpArray = this.otp.split('');
+    for (let i = this.otpArray.length; i < 6; i++) {
+      this.otpArray.push('');
+    }
   }
 
   onSubmit(){
@@ -42,6 +61,7 @@ export class ForgotPasswordComponent implements OnInit{
 
   verifyOtp(){
 
+    console.log(this.otp)
   }
 
 }

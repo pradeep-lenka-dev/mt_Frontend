@@ -4,10 +4,11 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { NgxLoadingModule } from "ngx-loading";
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+
 // import { NotificationModalComponent } from '../shared/notification-modal/notification-modal.component';
 
 
@@ -24,7 +25,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     NgxLoadingModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class AuthModule { }
